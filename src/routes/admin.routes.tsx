@@ -1,24 +1,33 @@
-import { ReactNode } from "react";
 import AdminDashboard from "../pages/Admin/AdminDashboard";
 import CreateAdmin from "../pages/Admin/CreateAdmin";
 import CreateFaculty from "../pages/Admin/CreateFaculty";
 import CreateStudent from "../pages/Admin/CreateStudent";
 import { NavLink } from "react-router-dom";
-type TRoute = {
-  path: string;
-  element: ReactNode;
-};
+import AcademicSemester from "../pages/Admin/semesterManagement/AcademicSemester";
+import { ReactNode } from "react";
 
+type TRoute = { path: string; element: ReactNode };
 type TAdminSideBarItem = {
   key: string;
   label: ReactNode;
   children?: TAdminSideBarItem[];
 };
+
 export const adminPaths = [
   {
     name: "Dashboard",
     path: "dashboard",
     element: <AdminDashboard />,
+  },
+  {
+    name: "Academic Management",
+    children: [
+      {
+        name: "Academic Semester",
+        path: "academic-semester",
+        element: <AcademicSemester />,
+      },
+    ],
   },
   {
     name: "UserManagement",
