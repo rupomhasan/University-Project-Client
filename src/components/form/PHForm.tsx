@@ -1,18 +1,45 @@
+import { Form } from "antd";
 import { ReactNode } from "react";
-import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import {
+  FieldValues,
+  FormProvider,
+  SubmitHandler,
+  useForm,
+} from "react-hook-form";
 import { TFormInput } from "../../pages/Login";
 
 type TFormProps = {
-  onSubmit: SubmitHandler<TFormInput>;
+  onSubmit: SubmitHandler<FieldValues>;
   children: ReactNode;
+  defaultValues?: TFormInput;
+  resolver?: any;
 };
-const PHForm = ({ children, onSubmit }: TFormProps) => {
-  const methods = useForm({
-    defaultValues: { id: "A-0001", password: "admin123" },
-  });
+
+type TFormConfig = {
+  defaultValues?: Record<string, any>;
+  resolver?: any;
+};
+
+const PHForm = ({
+  children,
+  onSubmit,
+  defaultValues,
+  resolver,
+}: TFormProps) => {
+  const formConfig: TFormConfig = {};
+  if (defaultValues) {
+    formConfig["defaultValues"] = defaultValues;
+  }
+  if (resolver) {
+    formConfig["resolver"] = resolver;
+  }
+  const methods = useForm(formConfig);
+
   return (
     <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(onSubmit)}>{children}</form>
+      <Form layout="vertical" onFinish={methods.handleSubmit(onSubmit)}>
+        {children}
+      </Form>
     </FormProvider>
   );
 };
