@@ -1,13 +1,12 @@
-import { Form, Input } from "antd";
+import { DatePicker, Form} from "antd";
 import { Controller } from "react-hook-form";
 
 type TInputProps = {
-  type: string;
   name: string;
   label?: string;
 };
 
-const PHInput = ({ type, name, label }: TInputProps) => {
+const PHDatePicker = ({ name, label }: TInputProps) => {
   return (
     <div style={{ marginBottom: "16px" }}>
       <Controller
@@ -15,7 +14,7 @@ const PHInput = ({ type, name, label }: TInputProps) => {
         render={({ field, fieldState: { error } }) => (
           <>
             <Form.Item label={label}>
-              <Input type={type} id={name} {...field} />
+              <DatePicker id={name} {...field} style={{ width: "100%" }} />
               {error && <div style={{ color: "red" }}>{error.message}</div>}
             </Form.Item>
           </>
@@ -25,4 +24,4 @@ const PHInput = ({ type, name, label }: TInputProps) => {
   );
 };
 
-export default PHInput;
+export default PHDatePicker;

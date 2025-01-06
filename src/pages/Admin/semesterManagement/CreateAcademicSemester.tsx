@@ -5,10 +5,11 @@ import PHSelect from "../../../components/form/PHSelect";
 import { semesterOptions } from "../../../constant/semester";
 import { monthOptions } from "../../../constant/semester.global";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { semesterValidationSchema } from "../../../academicManagement.Schema.ts/academicManagement.Schema";
+import { semesterValidationSchema } from "../../../academicManagementSchema/academicManagement.Schema";
 import { toast } from "sonner";
-import { useAddSemesterMutation } from "../../../redux/features/admin/academicManagement";
 import { TResponse } from "../../../types/global.types";
+import { TAcademicSemester } from "../../../types/academicManagement.type";
+import { useAddAcademicSemesterMutation } from "../../../redux/features/admin/academicManagement";
 
 const currentYear = new Date().getFullYear();
 
@@ -18,7 +19,7 @@ const yearOptions = [0, 1, 2, 3, 4].map((number) => ({
 }));
 
 const CreateAcademicSemester = () => {
-  const [addSemester] = useAddSemesterMutation();
+  const [addSemester] = useAddAcademicSemesterMutation();
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const toastId = toast.loading("Crating....");
@@ -31,7 +32,9 @@ const CreateAcademicSemester = () => {
       endMonth: data.endMonth,
     };
     try {
-      const res = (await addSemester(semesterData)) as TResponse;
+      const res = (await addSemester(
+        semesterData
+      )) as TResponse<TAcademicSemester>;
 
       if (res.error) {
         toast.error(res.error.data.message, { id: toastId });

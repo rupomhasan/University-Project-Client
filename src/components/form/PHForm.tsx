@@ -11,7 +11,7 @@ import { TFormInput } from "../../pages/Login";
 type TFormProps = {
   onSubmit: SubmitHandler<FieldValues>;
   children: ReactNode;
-  defaultValues?: TFormInput;
+  defaultValues?: TFormInput | any;
   resolver?: any;
 };
 
@@ -35,9 +35,14 @@ const PHForm = ({
   }
   const methods = useForm(formConfig);
 
+  const submit: SubmitHandler<FieldValues> = (data) => {
+    onSubmit(data);
+    methods.reset();
+  };
+
   return (
     <FormProvider {...methods}>
-      <Form layout="vertical" onFinish={methods.handleSubmit(onSubmit)}>
+      <Form layout="vertical" onFinish={methods.handleSubmit(submit)}>
         {children}
       </Form>
     </FormProvider>

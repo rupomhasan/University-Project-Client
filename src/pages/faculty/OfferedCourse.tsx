@@ -1,5 +1,5 @@
-const OfferedCourse = () => {
+const OfferedCourses = () => {
   return <div>this offered course component is powered by faculty</div>;
 };
 
-export default OfferedCourse;
+export default OfferedCourses;

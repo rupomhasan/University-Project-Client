@@ -22,7 +22,6 @@ const customBaseQuery: BaseQueryFn<FetchArgs, BaseQueryApi, DefinitionType> = as
   let result = await baseQuery(args,
     api,
     extraOptions) as TResponse<TAcademicSemester[]>;
-  console.log("result => ", result)
   if (result?.error?.status === 404) {
     toast.error(result?.error?.data?.message)
   }
@@ -64,5 +63,6 @@ const customBaseQuery: BaseQueryFn<FetchArgs, BaseQueryApi, DefinitionType> = as
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: customBaseQuery,
+  tagTypes: ["semester"],
   endpoints: () => ({})
 })

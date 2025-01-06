@@ -6,13 +6,13 @@ export type TRoute = {
 };
 
 export type TAdminSideBarItem = {
-  key: string;
+  key: string | undefined;
   label: ReactNode;
   children?: TAdminSideBarItem[];
-};
+} | undefined;
 
 export type TUserPath = {
-  name: string;
+  name?: string;
   path?: string;
   element?: ReactNode;
   children?: TUserPath[]
