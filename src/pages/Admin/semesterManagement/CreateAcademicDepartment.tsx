@@ -49,7 +49,7 @@ const CreateAcademicDepartment = () => {
 
   return (
     <Flex justify="center">
-      <Col span={10}>
+      <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>
         <PHForm
           onSubmit={onSubmit}
           resolver={zodResolver(academicDepartmentValidationSchema)}

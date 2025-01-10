@@ -82,6 +82,7 @@ const academicManagementApi = baseApi.injectEndpoints({
         }
       }
     }),
+
   })
 })
 export const

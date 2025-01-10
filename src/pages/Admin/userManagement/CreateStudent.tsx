@@ -47,24 +47,7 @@ const defaultStudent = {
   admissionSemester: "66ac5d1c067499c2697c15f2",
   academicDepartment: "66ac5becae80408b7ce1bdc0",
 };
-/* export type TFaculty = {
-  id,
-  user,;
-  name,
-  designation,
-  gender,
-  dateOfBirth?,
-  email,
-  contactNo,
-  emergencyContactNo,
-  bloodGroup?,
-  presentAddress,
-  permanentAddress,
-  profileImg?,
-  academicDepartment,;
-  academicFaculty,;
-  isDeleted,
-}; */
+
 const CreateStudent = () => {
   const [addStudent, { error }] = useAddStudentMutation();
 

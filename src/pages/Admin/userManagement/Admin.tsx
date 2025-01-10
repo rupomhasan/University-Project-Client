@@ -6,7 +6,6 @@ import { TQueryPrams } from "../../../types";
 import { TStudent } from "../../../types/userManagement.type";
 import {
   useGetAllAdminQuery,
-  useGetAllStudentQuery,
 } from "../../../redux/features/admin/userManagementApi";
 import { Link } from "react-router-dom";
 

@@ -56,26 +56,27 @@ const userManagementApi = baseApi.injectEndpoints({
     }),
     getAllFaculty: builder.query({
       query: (args) => {
+        console.log("args : ", args);
+        const params = new URLSearchParams();
 
-        const params = new URLSearchParams()
         if (args) {
-
-          args?.forEach((item: TQueryPrams) => (params.append(item.name, item.value as string)))
+          args.forEach((item: TQueryPrams) => {
+            params.append(item.name, item.value as string);
+          });
         }
-        console.log("args", args)
 
         return {
-          url: "/faculties",
-          method: "GET",
-          params: params
-        }
+          url: '/faculties',
+          method: 'GET',
+          params: params,
+        };
       },
       transformResponse: (response: TResponseRedux<TStudent[]>) => {
         return {
           data: response.data,
-          meta: response.meta
-        }
-      }
+          meta: response.meta,
+        };
+      },
     }),
     getSingleFaculty: builder.query({
       query: (facultyId) => ({

@@ -1,3 +1,5 @@
+
+
 import { TAcademicDepartment, TAcademicFaculty, TAcademicSemester, } from "./academicManagement.type"
 
 export type TStudent = {
@@ -5,6 +7,7 @@ export type TStudent = {
   user: TUser
   id: string
   name: TName
+  fullName: string
   gender: string
   dateOfBirth: string
   contactNo: string
@@ -23,6 +26,24 @@ export type TStudent = {
   createdAt: string
   updatedAt: string
 }
+
+export type TFaculty = {
+  _id: string
+  id: string
+  user: string
+  designation: string
+  name: TName
+  gender: string
+  bloodGroup: string
+  presentAddress: string
+  permanentAddress: string
+  profileImg: string
+  academicDepartment: TAcademicDepartment
+  academicFaculty: string
+  isDeleted: boolean
+  fullName: string
+}
+
 
 export type TUser = {
   _id: string

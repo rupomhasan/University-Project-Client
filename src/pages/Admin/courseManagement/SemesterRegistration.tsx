@@ -3,8 +3,7 @@ import PHForm from "../../../components/form/PHForm";
 import { Button, Col, Flex } from "antd";
 import PHSelect from "../../../components/form/PHSelect";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { semesterValidationSchema } from "../../../academicManagementSchema/academicManagement.Schema";
+
 import { toast } from "sonner";
 import { TResponse } from "../../../types/global.types";
 
@@ -57,7 +56,7 @@ const SemesterRegistration = () => {
 
   return (
     <Flex justify="center" align="center" style={{ height: "80vh" }}>
-      <Col span={7}>
+      <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>
         <PHForm
           onSubmit={onSubmit}
           // resolver={zodResolver(semesterValidationSchema)}

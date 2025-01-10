@@ -36,7 +36,7 @@ const CreateAcademicFaculty = () => {
 
   return (
     <Flex justify="center">
-      <Col span={10}>
+      <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>
         <PHForm
           resolver={zodResolver(academicFacultyValidationSchema)}
           onSubmit={onSubmit}
